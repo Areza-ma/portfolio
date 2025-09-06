@@ -1,58 +1,131 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hamari Anir – Portfolio</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <meta name="description" content="Bienvenue sur le portfolio de Hamari Anir, étudiant en BUT GEII passionné par l'aéronautique, la cybersécurité, le cloud et les réseaux.">
+  <meta name="description" content="Portfolio de Hamari Anir (BUT GEII) : projets en automatisme, réseaux, cloud et cybersécurité." />
+
+  <!-- Perf -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="theme-color" content="#0B3D91" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="canonical" href="https://areza-ma.github.io/portfolio/" />
+
+  <!-- Social -->
+  <meta property="og:title" content="Hamari Anir – Portfolio">
+  <meta property="og:description" content="Projets en automatisme, réseaux, cloud & cybersécurité.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
+<body data-theme="system">
+  <!-- Lien d’évitement -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <main>
-    <section class="hero-block animate">
-      <div class="hero-container">
-        <!-- Image supprimée ici -->
+  <!-- En-tête & nav -->
+  <header class="site-header" role="banner">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="Accueil Hamari Anir">
+        <span class="brand-mark" aria-hidden="true">▲</span>
+        <span class="brand-text">Hamari&nbsp;Anir</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Navigation principale">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal">☰ <span class="sr-only">Ouvrir le menu</span></button>
+        <ul id="menu-principal">
+          <li><a href="index.html" class="active" aria-current="page">🏠 Accueil</a></li>
+          <li><a href="about.html">👤 À propos</a></li>
+          <li><a href="projects.html">💼 Projets</a></li>
+          <li><a href="contact.html">✉️ Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="dark-mode-toggle" class="btn btn-ghost" aria-pressed="false">🌙 Mode sombre</button>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+    <section class="hero-block">
+      <div class="container hero-grid">
         <div class="hero-text">
-          <h1>Bonjour, je suis <span>Hamari Anir</span></h1>
-<p>
-  Sérieux, curieux et motivé, je développe des projets techniques en informatique et automatisme avec l’envie de toujours progresser.
-</p>
+          <h1>Bonjour, je suis <span class="accent">Hamari Anir</span></h1>
+          <p class="lead">
+            Sérieux, curieux et motivé, je développe des projets techniques en informatique et automatisme
+            avec l’envie de toujours progresser.
+          </p>
 
-          <div style="margin-top: 1rem;">
-            <a href="projects.html" class="btn-download">🚀 Voir mes projets</a>
-            <a href="cvanir.pdf" class="btn-download" target="_blank">📄 Télécharger mon CV</a>
+          <div class="cta-row" role="group" aria-label="Actions principales">
+            <a href="projects.html" class="btn btn-primary">🚀 Voir mes projets</a>
+            <!-- Mets bien le bon nom de fichier PDF ici -->
+            <a href="cvanir.pdf" class="btn btn-outline" target="_blank" rel="noopener" download>
+              📄 Télécharger mon CV
+            </a>
           </div>
         </div>
+
+        <!-- Optionnel : visuel -->
+        <!--
+        <figure class="hero-media" aria-hidden="true">
+          <img src="assets/hero.jpg" alt="" loading="lazy">
+        </figure>
+        -->
       </div>
 
-      <blockquote style="text-align:center; font-style:italic; color:#ccc; margin-top:2rem;">
-  "J’aime comprendre comment ça marche, puis trouver comment l’améliorer."<br>
-  <span style="display:block; margin-top:0.5rem; font-size:0.9rem; color:#888;"></span>
-</blockquote>
+      <blockquote class="quote">
+        «&nbsp;J’aime comprendre comment ça marche, puis trouver comment l’améliorer.&nbsp;»
+      </blockquote>
+    </section>
 
+    <!-- Section tags/compétences (facultatif) -->
+    <section class="highlights" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 id="skills-title" class="h2">Domaines clés</h2>
+        <ul class="pill-list" role="list">
+          <li class="pill">informatique</li>
+          <li class="pill">Automatisme</li>
+          <li class="pill">Réseaux</li>
+          <li class="pill">Cybersécurité</li>
+          <li class="pill">Aéronautique</li>
+        </ul>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <nav class="footer-nav">
-      <ul>
-        <li><a href="index.html" class="active">🏠 Accueil</a></li>
-        <li><a href="about.html">👤 À propos</a></li>
-        <li><a href="projects.html">💼 Projets</a></li>
-        <li><a href="contact.html">✉️ Contact</a></li>
-      </ul>
-    </nav>
-    <p>
-      🔗 Retrouvez-moi sur 
-      <a href="https://linkedin.com/in/anir-hamari" target="_blank" rel="noopener" style="color:#00d4ff; font-weight:bold;">
-        LinkedIn
-      </a>
-    </p>
-    <button id="dark-mode-toggle">🌙 Mode sombre</button>
-    <p>© 2025 Hamari Anir. Tous droits réservés.</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <nav class="footer-nav" aria-label="Navigation de pied de page">
+        <ul>
+          <li><a href="index.html" class="active">🏠 Accueil</a></li>
+          <li><a href="about.html">👤 À propos</a></li>
+          <li><a href="projects.html">💼 Projets</a></li>
+          <li><a href="contact.html">✉️ Contact</a></li>
+        </ul>
+      </nav>
+
+      <p>
+        🔗 Retrouvez-moi sur
+        <a href="https://linkedin.com/in/anir-hamari" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+      <p>© 2025 Hamari Anir. Tous droits réservés.</p>
+    </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <!-- Données structurées -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hamari Anir",
+    "jobTitle": "Étudiant BUT GEII",
+    "url": "https://areza-ma.github.io/portfolio/",
+    "sameAs": ["https://linkedin.com/in/anir-hamari"]
+  }
+  </script>
+
+  <noscript><style>.nav-toggle{display:none}</style></noscript>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
