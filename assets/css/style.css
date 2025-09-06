@@ -1,270 +1,247 @@
-/* ===== Fond & Typo générale ===== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+/* =========================================
+   Thème & Accessibilité (NASA-like)
+   ========================================= */
+:root{
+  --bg: #0a0f17;            /* fond profond */
+  --bg-2:#0d1522;
+  --text:#e8eef7;
+  --muted:#a9b1c2;
+  --primary:#0B3D91;        /* NASA blue */
+  --accent:#1ed6ff;
+  --card: #0f1b2b80;        /* glassy */
+  --border:#18314a;
+  --shadow: 0 12px 36px rgba(0,0,0,.35);
+  --radius:16px;
+}
+
+body[data-theme="light"]{
+  --bg: #f7fbff;
+  --bg-2:#eef4fb;
+  --text:#0e1116;
+  --muted:#5b6370;
+  --primary:#0B3D91;
+  --accent:#00bfe6;
+  --card:#ffffffea;
+  --border:#e3e7ee;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+body.dark, body[data-theme="dark"]{
+  --bg:#0a0f17; --bg-2:#0d1522; --text:#e8eef7; --muted:#a9b1c2;
+  --primary:#5ea1ff; --accent:#1ed6ff; --card:#0f1b2b80; --border:#18314a;
+  --shadow:0 12px 36px rgba(0,0,0,.35);
+}
+
+/* =========================================
+   Fond & Typo
+   ========================================= */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -20%, rgba(27,78,130,.25), transparent 60%),
+    radial-gradient(800px 500px at 110% 10%, rgba(0,212,255,.12), transparent 60%),
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   background-attachment: fixed;
-  background-size: 400% 400%;
-  animation: gradientFlow 20s ease infinite;
-  color: #f5f5f5;
+  background-size: cover;
+  line-height:1.65;
 }
 
+/* Animation de fond (douce) */
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { filter:hue-rotate(0deg) }
+  50% { filter:hue-rotate(10deg) }
+  100%{ filter:hue-rotate(0deg) }
+}
+body{ animation: gradientFlow 30s ease-in-out infinite }
+@media (prefers-reduced-motion: reduce){
+  body{ animation:none }
 }
 
-/* ===== Sections Générales ===== */
-section {
-  padding: 4rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+/* Conteneur global réutilisable */
+.container{ max-width:1100px; margin:0 auto; padding:0 1.2rem }
+
+/* Focus accessible */
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:8px;
 }
 
-h1.section-title,
-h1 {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 3rem;
-  color: #00d4ff;
-}
-
-h2 {
-  font-size: 1.6rem;
-  color: #1ed6ff;
-}
-
-/* ===== Projets ===== */
-.project {
-  background-color: #ffffff10;
+/* =========================================
+   Header collant (sobre NASA)
+   ========================================= */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background: color-mix(in srgb, var(--bg-2) 80%, transparent);
   backdrop-filter: blur(8px);
-  border-radius: 15px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  border-bottom:1px solid var(--border);
+}
+.header-bar{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; min-height:64px;
+  gap:1rem;
+}
+.brand{ display:inline-flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit; font-weight:700 }
+.brand-mark{ width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--primary); color:#fff; font-weight:800 }
+.brand-text{ letter-spacing:.2px }
+
+.primary-nav ul{ list-style:none; display:flex; gap:.6rem; margin:0; padding:0 }
+.primary-nav a{
+  text-decoration:none; color:inherit; padding:.5rem .75rem; border-radius:10px;
+}
+.primary-nav a:hover{ background: color-mix(in srgb, var(--accent) 10%, transparent) }
+.primary-nav a.active,[aria-current="page"]{ color:var(--accent) }
+
+/* Mobile */
+.nav-toggle{ display:none }
+@media (max-width:820px){
+  .primary-nav ul{ display:none }
+  .primary-nav[data-open="true"] ul{
+    display:flex; position:absolute; right:1rem; top:64px; flex-direction:column;
+    background:var(--bg-2); border:1px solid var(--border); border-radius:12px;
+    padding:.5rem; box-shadow:var(--shadow); min-width:220px;
+  }
+  .nav-toggle{
+    display:inline-flex; align-items:center; gap:.4rem;
+    border:1px solid var(--border); padding:.45rem .7rem; border-radius:10px;
+    background:var(--bg-2); color:var(--text)
+  }
 }
 
-.project:hover {
+/* =========================================
+   Sections Générales
+   ========================================= */
+section{ padding:4rem 1.5rem; }
+.section-title, h1{
+  text-align:center;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin:0 0 2rem;
+  color: var(--accent);
+}
+h2{ font-size:1.6rem; color: var(--accent) }
+
+.intro-text{
+  font-size:1.05rem; color:var(--muted);
+  text-align:center; margin:0 auto 2rem; max-width:820px;
+}
+
+/* =========================================
+   Hero
+   ========================================= */
+.hero-block{ padding:4rem 1.5rem; border-bottom:1px solid var(--border) }
+.hero-container{
+  display:flex; align-items:center; justify-content:center; gap:3rem; flex-wrap:wrap;
+  max-width:1200px; margin:auto;
+}
+.hero-image{ max-width:350px; width:100%; border-radius:15px; box-shadow:0 0 20px rgba(0,212,255,.2) }
+.hero-image.large{ max-width:520px; width:100% }
+.hero-text{ flex:1; min-width:280px; max-width:560px; color:var(--text) }
+.hero-text h1{ font-size:clamp(1.9rem, 3.2vw, 2.6rem); margin:0 0 1rem }
+.hero-text h1 span{ color:var(--accent) }
+.hero-text p{ font-size:1.1rem; margin:0 0 1.2rem; color:var(--muted) }
+.hero-block blockquote{ font-style:italic; color:var(--muted); text-align:center; margin-top:1.6rem; font-size:1rem }
+
+/* Responsive hero */
+@media (max-width:768px){
+  .hero-container{ flex-direction:column; text-align:center }
+  .hero-text{ text-align:center }
+}
+
+/* =========================================
+   Boutons
+   ========================================= */
+.btn, .btn-download, .btn-primary, .btn-outline, .btn-ghost{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.75rem 1.1rem; border-radius:999px; text-decoration:none; cursor:pointer;
+  transition: transform .06s ease, background .2s ease, border-color .2s ease;
+  user-select:none; font-weight:700
+}
+.btn:active, .btn-download:active, .btn-primary:active, .btn-outline:active, .btn-ghost:active{ transform: translateY(1px) }
+
+.btn-primary{ background:var(--primary); color:#fff; border:1px solid color-mix(in srgb, var(--primary) 85%, #000) }
+.btn-primary:hover{ background: color-mix(in srgb, var(--primary) 88%, #000) }
+
+.btn-outline{ background:transparent; color:var(--accent); border:1px solid var(--accent) }
+.btn-outline:hover{ background: color-mix(in srgb, var(--accent) 12%, transparent) }
+
+.btn-ghost{ background:transparent; border:1px solid var(--border); color:var(--text) }
+.btn-ghost:hover{ background: color-mix(in srgb, var(--accent) 8%, transparent) }
+
+/* Compat avec ton ancien nom */
+.btn-download{ background-color: var(--accent); color:#000; border:1px solid color-mix(in srgb, var(--accent) 70%, #000) }
+.btn-download:hover{ background-color: color-mix(in srgb, var(--accent) 85%, #000) }
+
+/* =========================================
+   Grille de projets
+   ========================================= */
+#projects .project{
+  background: var(--card);
+  border:1px solid var(--border);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+#projects .project:hover{
   transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+}
+.project-img{
+  width: min(100%, 520px); height:auto; border-radius:12px; margin: 1rem auto; display:block;
 }
 
-.project-img {
-  width: 80%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 12px;
-  margin: 1rem auto;
-  display: block;
+/* Petites pastilles (filtres/stack) */
+.pill-list{ display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center; margin:0 0 1.2rem; padding:0; list-style:none }
+.pill{
+  padding:.45rem .8rem; border-radius:999px; background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border:1px solid var(--border); color:var(--muted); font-weight:600
 }
 
-.project p {
-  font-size: 1rem;
-  color: #e0e0e0;
-  line-height: 1.6;
+/* =========================================
+   Animations au scroll (douces)
+   ========================================= */
+.animate{ opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease }
+.animate.visible{ opacity:1; transform:none }
+@media (prefers-reduced-motion: reduce){
+  .animate{ opacity:1; transform:none; transition:none }
 }
 
-.project.no-image {
-  text-align: center;
+/* =========================================
+   Footer
+   ========================================= */
+footer{
+  background: linear-gradient(180deg, transparent, var(--bg-2));
+  border-top:1px solid var(--border);
+  text-align:center; padding:2rem 1rem; color:var(--muted); margin-top:3rem;
 }
-
-.intro-text {
-  font-size: 1.1rem;
-  color: #bbb;
-  text-align: center;
-  margin-bottom: 2rem;
+footer nav ul{
+  list-style:none; padding:0; display:flex; justify-content:center; gap:1.2rem; margin:0 0 1rem;
 }
-
-/* ===== Boutons de téléchargement ===== */
-.btn-download {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #1ed6ff;
-  color: #000;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+footer nav a{
+  color:var(--accent); text-decoration:none; font-weight:700; padding:.35rem .6rem; border-radius:8px
 }
+footer nav a:hover{ background: color-mix(in srgb, var(--accent) 10%, transparent) }
 
-.btn-download:hover {
-  background-color: #00b3d4;
+/* =========================================
+   Bouton dark mode (compatible body.dark ET data-theme)
+   ========================================= */
+#dark-mode-toggle{
+  margin-top: .5rem;
+  background: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 65%, #000);
+  color:#000;
+  padding:.55rem 1rem; font-weight:700; border-radius:10px; cursor:pointer;
+  transition: background .2s ease;
 }
+#dark-mode-toggle:hover{ background: color-mix(in srgb, var(--accent) 85%, #000) }
 
-/* ===== Animation scroll ===== */
-.animate {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.animate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== Footer / Navigation en bas ===== */
-footer {
-  background-color: #00000040;
-  text-align: center;
-  padding: 2rem 1rem;
-  color: #ccc;
-  margin-top: 4rem;
-}
-
-footer nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
-}
-
-footer nav ul li a {
-  color: #00d4ff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-footer nav ul li a:hover {
-  color: #fff;
-}
-
-/* ===== Bouton dark mode ===== */
-#dark-mode-toggle {
-  margin-top: 1rem;
-  background-color: #00d4ff;
-  border: none;
-  color: #000;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#dark-mode-toggle:hover {
-  background-color: #00b3d4;
-}
-
-/* ===== Mode sombre actif ===== */
-body.dark {
-  background: #121212;
-  color: #f0f0f0;
-}
-
-body.dark h1,
-body.dark h2,
-body.dark .section-title {
-  color: #00ffff;
-}
-
-body.dark .project {
-  background-color: #1e1e1e80;
-  box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
-}
-
-body.dark .project p {
-  color: #d0d0d0;
-}
-
-body.dark .btn-download {
-  background-color: #00ffff;
-  color: #000;
-}
-
-body.dark .btn-download:hover {
-  background-color: #00c2c2;
-}
-
-body.dark footer {
-  background-color: #111;
-  color: #aaa;
-}
-
-body.dark footer a {
-  color: #00ffff;
-}
-
-body.dark footer a:hover {
-  color: #fff;
-}
-
-/* ===== Page d’accueil : bloc présentation ===== */
-.hero-block {
-  padding: 4rem 2rem;
-}
-
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-  flex-direction: row; /* image à gauche, texte à droite */
-  max-width: 1200px;
-  margin: auto;
-}
-
-.hero-image {
-  max-width: 350px;
-  width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-}
-
-.hero-image.large {
-  max-width: 520px;
-  width: 200%;
-}
-
-.hero-text {
-  flex: 1;
-  max-width: 550px;
-  color: #f5f5f5;
-  text-align: left;
-}
-
-.hero-text h1 {
-  font-size: 2.6rem;
-  margin-bottom: 1rem;
-}
-
-.hero-text h1 span {
-  color: #00d4ff;
-}
-
-.hero-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-/* Citation */
-.hero-block blockquote {
-  font-style: italic;
-  color: #ccc;
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 1rem;
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-}
+/* =========================================
+   Utilitaires
+   ========================================= */
+img{ max-width:100%; height:auto; display:block }
+blockquote{ margin:0 }
