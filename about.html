@@ -2,52 +2,101 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>À propos de Hamari Anir</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <meta name="description" content="Je suis étudiant en BUT GEII, passionné par l'informatique, les réseaux, l'automatisme et l'innovation technologique.">
+  <meta name="description" content="Étudiant en BUT GEII, passionné par l'informatique, les réseaux, l'automatisme et l'innovation technologique. Découvrez mon parcours, mes compétences et mes projets." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- SEO (à ajuster avec votre domaine) -->
+  <link rel="canonical" href="https://www.votredomaine.fr/about.html" />
+  <meta name="robots" content="index,follow" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="À propos de Hamari Anir" />
+  <meta property="og:description" content="Étudiant en BUT GEII – parcours, expériences, compétences et objectifs." />
+  <meta property="og:url" content="https://www.votredomaine.fr/about.html" />
+  <meta property="og:image" content="/assets/img/preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="À propos de Hamari Anir" />
+  <meta name="twitter:description" content="Étudiant en BUT GEII – parcours, expériences, compétences et objectifs." />
+  <meta name="twitter:image" content="/assets/img/preview.jpg" />
+  <!-- Favicon (optionnel) -->
+  <link rel="icon" href="/assets/favicon.ico" />
+  <style>
+    /* Styles minimes pour accessibilité si CSS principal absent */
+    :root {scroll-behavior:smooth}
+    .visually-hidden{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
+    .btn{display:inline-block;padding:.6rem 1rem;border-radius:.75rem;text-decoration:none;border:1px solid currentColor}
+    .btn-download{display:inline-block;margin:.25rem 0}
+    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:1rem;flex-wrap:wrap}
+    header, footer{border-block:1px solid rgba(0,0,0,.1);padding:.75rem 1rem}
+    main{max-width:960px;margin:0 auto;padding:1rem}
+    .section-title{margin-top:0}
+  </style>
+  <!-- Données structurées Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hamari Anir",
+    "url": "https://www.votredomaine.fr/",
+    "image": "https://www.votredomaine.fr/assets/img/portrait.jpg",
+    "jobTitle": "Étudiant BUT GEII",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "IUT de Soissons"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/anir-hamari"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="visually-hidden" href="#contenu">Aller au contenu</a>
   <header id="header">
-    <nav role="navigation">
+    <nav aria-label="Navigation principale" role="navigation">
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="about.html" class="active">À propos</a></li>
+        <li><a href="about.html" aria-current="page">À propos</a></li>
         <li><a href="projects.html">Projets</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="contenu">
+    <nav aria-label="Fil d'Ariane" class="breadcrumb" style="margin:1rem 0;">
+      <ol style="display:flex;gap:.5rem;list-style:none;padding:0;margin:0;flex-wrap:wrap">
+        <li><a href="index.html">Accueil</a></li>
+        <li aria-hidden="true">›</li>
+        <li><span aria-current="page">À propos</span></li>
+      </ol>
+    </nav>
+
     <section id="about" class="animate">
       <h1 class="section-title">👤 À propos de moi</h1>
-
       <p>
         Je suis <strong>Hamari Anir</strong>, étudiant en 3ᵉ année de <strong>BUT GEII</strong> (Génie Électrique et Informatique Industrielle) à l'IUT de Soissons. Passionné par l’informatique, l’automatisation, les réseaux, la cybersécurité et les technologies émergentes, je développe des projets concrets à fort potentiel.
       </p>
 
-      <p>
-        Mon parcours se construit à travers des expériences diversifiées : 
-        <ul>
-          <li>🔧 <strong>Alternance chez U Logistique</strong> : maintenance industrielle (corrective, préventive et améliorative) sur l’ensemble de l’entrepôt logistique (systèmes automatisés, convoyeurs, capteurs, sécurité machine).</li>
-          <li>💻 <strong>Stage chez Altair Group</strong> : développement d’une application web (React, API Django, base PostgreSQL), avec dashboard sécurisé et gestion de comptes utilisateurs.</li>
-          <li>⚽ <strong>Contrat civique en club sportif</strong> : encadrement d’enfants et adolescents, organisation d’événements, transmission de valeurs.</li>
-          <li>🧪 <strong>Projets académiques</strong> : robot suiveur de ligne, multi-sonde connectée avec MQTT, IoT, programmation embarquée (C/VHDL).</li>
-          <li>🚀 <strong>Projets personnels</strong> : développement de sites web, applications mobiles, mini-API, apprentissage du machine learning.</li>
-        </ul>
-      </p>
+      <h2>🧭 Expériences marquantes</h2>
+      <ul>
+        <li>🔧 <strong>Alternance – U Logistique</strong> : maintenance industrielle (corrective, préventive, améliorative) sur l’ensemble de l’entrepôt (systèmes automatisés, convoyeurs, capteurs, sécurité machine).</li>
+        <li>💻 <strong>Stage – Altair Group</strong> : développement d’une application web (React, API Django, base PostgreSQL) avec dashboard sécurisé et gestion de comptes utilisateurs.</li>
+        <li>⚽ <strong>Service civique – Club sportif</strong> : encadrement d’enfants et adolescents, organisation d’événements, transmission de valeurs.</li>
+        <li>🧪 <strong>Projets académiques</strong> : robot suiveur de ligne, multi-sonde connectée avec MQTT, IoT, programmation embarquée (C/VHDL).</li>
+        <li>🚀 <strong>Projets personnels</strong> : développement de sites web, applications mobiles, mini-API, apprentissage du machine learning.</li>
+      </ul>
 
       <h2>🎯 Objectif professionnel</h2>
-      <p>
-        🔍 Je suis à la recherche d’un <strong>stage pour Mars 2026</strong> dans les domaines suivants : développement informatique, automatisme, informatique industrielle ou IT (Dev, Réseaux...).
-      </p>
+      <p>🔍 À la recherche d’un <strong>stage pour mars 2026</strong> dans : développement informatique, automatisme, informatique industrielle ou IT (Dev, Réseaux, etc.).</p>
 
       <h2>🛠️ Compétences techniques</h2>
       <ul>
         <li>💻 Programmation : Python, Java, VHDL, C, HTML/CSS, JavaScript, Visual Basic, MATLAB, SQL</li>
-        <li>⚙️ Automatisme : TIA Portal, Unity Pro, Schémaplic – câblage, API Siemens, Control expert, SoMove</li>
-        <li>🌐 Développement web : React, Django, PostgreSQL, Node.js, SQL server</li>
+        <li>⚙️ Automatisme : TIA Portal, Unity Pro / Control Expert, Schémaplic, SoMove, API Siemens, câblage</li>
+        <li>🌐 Web : React, Django, Node.js, PostgreSQL, SQL Server</li>
         <li>🔌 Informatique industrielle : IoT, MQTT, ESP32, modélisation, soudure, mesures</li>
         <li>🧰 Logiciels : Suite Office, Quartus II, Proteus ISIS, GitHub, VS Code, Canva</li>
         <li>🌍 Langues : Anglais (B2), Espagnol (B2), Arabe (A2)</li>
@@ -57,25 +106,28 @@
       <h2>✅ Qualités humaines</h2>
       <ul>
         <li>💪 Curieux, rigoureux, motivé par l’apprentissage</li>
-        <li>🧠 Esprit d’analyse et capacité à résoudre des problèmes techniques</li>
-        <li>👥 Leadership, sens du travail en équipe</li>
+        <li>🧠 Esprit d’analyse et résolution de problèmes techniques</li>
+        <li>👥 Leadership et sens du travail en équipe</li>
         <li>⏱️ Ponctuel, organisé, persévérant</li>
       </ul>
 
       <h2>📄 Mes documents</h2>
+      <p>Vous pouvez consulter et télécharger mes documents :</p>
       <p>
-        Vous pouvez consulter et télécharger mes documents :
-      </p>
-      <p>
-        <a href="cv-AnirHamari-Copie.pdf" target="_blank" class="btn-download">📥 Télécharger mon CV (PDF)</a><br>
-        <a href="ltmotiv.pdf" target="_blank" class="btn-download">📥 Télécharger ma lettre de motivation</a>
+        <a href="cv-AnirHamari-Copie.pdf" target="_blank" rel="noopener" class="btn btn-download" download>
+          📥 Télécharger mon CV (PDF)
+        </a>
+        <br />
+        <a href="ltmotiv.pdf" target="_blank" rel="noopener" class="btn btn-download" download>
+          📥 Télécharger ma lettre de motivation (PDF)
+        </a>
       </p>
 
       <h2>🔗 Me contacter</h2>
       <p>
         👉 Retrouvez-moi aussi sur :
-        <br>
-        <a href="https://linkedin.com/in/anir-hamari" target="_blank" class="btn-download" style="margin-top:10px;">
+        <br />
+        <a href="https://linkedin.com/in/anir-hamari" target="_blank" rel="noopener" class="btn btn-download" style="margin-top:10px;">
           🔗 LinkedIn – Anir Hamari
         </a>
       </p>
@@ -83,18 +135,44 @@
   </main>
 
   <footer>
-    <nav>
+    <nav aria-label="Navigation pied de page">
       <ul>
         <li><a href="index.html">🏠 Accueil</a></li>
-        <li><a href="about.html" class="active">👤 À propos</a></li>
+        <li><a href="about.html" aria-current="page">👤 À propos</a></li>
         <li><a href="projects.html">🛠 Projets</a></li>
         <li><a href="contact.html">✉️ Contact</a></li>
       </ul>
     </nav>
-    <p>© 2025 Hamari Anir. Tous droits réservés.</p>
-    <button id="dark-mode-toggle">🌙 Mode sombre</button>
+    <p>© <span id="year"></span> Hamari Anir. Tous droits réservés.</p>
+    <button id="dark-mode-toggle" type="button" aria-pressed="false" aria-label="Basculer le mode sombre">🌙 Mode sombre</button>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    // Année automatique dans le footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Basculer le mode sombre avec préférence persistante
+    (function() {
+      const btn = document.getElementById('dark-mode-toggle');
+      const STORAGE_KEY = 'prefers-dark';
+      const root = document.documentElement;
+
+      const apply = (on) => {
+        root.dataset.theme = on ? 'dark' : 'light';
+        btn.setAttribute('aria-pressed', String(on));
+      };
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const prefers = saved !== null ? saved === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      apply(prefers);
+
+      btn.addEventListener('click', () => {
+        const next = !(root.dataset.theme === 'dark');
+        localStorage.setItem(STORAGE_KEY, String(next));
+        apply(next);
+      });
+    })();
+  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
